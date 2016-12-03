@@ -10,6 +10,9 @@ class SlidesContainer extends React.Component {
     // This binding is necessary to make `this` work in the callback
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+  componentDidMount() {
+    ReactDOM.findDOMNode(this.refs.slideContainerRef).focus();
+  }
   /**
       KeyPress Listener of teh SlidesContainer
       keyCode 39 - RightArrow - Current Slide  + 1
@@ -37,7 +40,7 @@ class SlidesContainer extends React.Component {
       color:"white"
   };
     return (
-      <div style={slideContainerStyle} onKeyUp={this.handleKeyPress} tabIndex="1">
+      <div ref="slideContainerRef" style={slideContainerStyle} onKeyUp={this.handleKeyPress} tabIndex="1">
           <Slide slideNum="1" playingSlide={this.state.slidePlaying}/>
           <Slide slideNum="2" playingSlide={this.state.slidePlaying}/>
           <Slide slideNum="3" playingSlide={this.state.slidePlaying}/>
